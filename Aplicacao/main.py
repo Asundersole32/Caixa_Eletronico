@@ -45,6 +45,15 @@ def messages(new_bills_amount):
     return message
 
 
-new_value = int(input("insira um valor a ser sacado: "))
-bills_amount = bills_count(new_value)
-print(messages(bills_amount))
+new_value = input("insira um valor a ser sacado: ")
+try:
+    bills_amount = bills_count(int(new_value))
+    if bills_amount is False:
+        print("Erro: Valor Invalido!")
+    else:
+        if not (type(bills_amount) is dict):
+            print(bills_amount)
+        else:
+            print(messages(bills_amount))
+except Exception as Error:
+   print(Error)
